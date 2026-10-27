@@ -1,1 +1,11 @@
-# use here COPY 1_13 .
+FROM golang:1.27.3
+
+ENV PORT=8080
+ENV REQUEST_ORIGIN=http://localhost:5001
+
+#RUN apt-get update && apt-get install -y git
+WORKDIR /myapp
+COPY 1_13 .
+RUN go build
+EXPOSE 8080
+CMD ["./server"]
